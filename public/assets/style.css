@@ -1,0 +1,28 @@
+:root {
+    --base-colour: #DCD7C9;
+    --text-colour: black;
+    --header-colour: rgb(71, 71, 71);
+    --header-hover-colour: #293335;
+    --hover-colour: rgb(70, 76, 76);
+    --button-colour: rgb(117, 122, 122);
+    --content-colour: #b3b2b1;
+    --border-colour: #d6cfcf;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    background: var(--base-colour);
+    font-family: 'Inconsolata', serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inconsolata', serif;
+    color: var(--text-colour);
+    margin: 5px;
+}
