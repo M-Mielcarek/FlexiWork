@@ -27,6 +27,14 @@ require_once "path.php";
     <section class="left-panel">
         <h1>FLEXI WORK</h1>
 
+        <p class="welcome">
+            WITAJ,
+            <?= $_SESSION['name'] ?? 'Użytkowniku'; ?>
+        </p>
+
+        <div class="image-box">
+            <img src="<?= BASE_URL ?>public/assets/team.png" alt="Team">
+        </div>
     </section>
 
     <section class="right-panel">

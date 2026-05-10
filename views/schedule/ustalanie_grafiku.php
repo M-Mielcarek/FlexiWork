@@ -2,8 +2,8 @@
 
 session_start();
 
-require_once "../config/database.php";
-require_once "../path.php";
+require_once "../../config/database.php";
+require_once "../../path.php";
 
 $userId = $_SESSION['user_id'] ?? null;
 

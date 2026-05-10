@@ -1,0 +1,171 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    width:100%;
+    min-height:100vh;
+    background:#f3f1f1;
+}
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.login-container{
+    display:flex;
+    width:100%;
+    min-height:100vh;
+}
+
+/* =========================================
+   LEWA STRONA
+========================================= */
+
+.login-left{
+    width:60%;
+    background:#f3f1f1;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:40px;
+}
+
+.left-content{
+    text-align:center;
+}
+
+.left-content h1{
+    font-size:54px;
+    color:#1b2d2f;
+    margin-bottom:20px;
+    letter-spacing:3px;
+}
+
+.left-content p{
+    color:#9b5a33;
+    font-size:18px;
+    margin-bottom:50px;
+    letter-spacing:2px;
+}
+
+.left-content img{
+    width:320px;
+    max-width:100%;
+}
+
+/* =========================================
+   PRAWA STRONA
+========================================= */
+
+.login-right{
+    width:40%;
+    background:#133638;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* =========================================
+   FORMULARZ
+========================================= */
+
+.login-form{
+    width:80%;
+    max-width:350px;
+
+    display:flex;
+    flex-direction:column;
+}
+
+.login-form h2{
+    color:white;
+    text-align:center;
+    margin-bottom:40px;
+    font-size:32px;
+    letter-spacing:2px;
+}
+
+/* INPUT */
+
+.login-form input{
+    width:100%;
+
+    padding:16px;
+
+    margin-bottom:20px;
+
+    border:none;
+    outline:none;
+
+    font-size:15px;
+
+    border-radius:4px;
+}
+
+/* BUTTON */
+
+.login-form button{
+    padding:16px;
+
+    border:none;
+
+    background:#9b5a33;
+    color:white;
+
+    font-size:15px;
+    cursor:pointer;
+
+    transition:0.3s;
+
+    border-radius:4px;
+}
+
+.login-form button:hover{
+    background:#b86b3d;
+}
+
+.error-message{
+    background:#c0392b;
+    color:white;
+
+    padding:12px;
+
+    margin-bottom:20px;
+
+    text-align:center;
+
+    border-radius:4px;
+
+    font-size:14px;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:900px){
+
+    .login-container{
+        flex-direction:column;
+    }
+
+    .login-left,
+    .login-right{
+        width:100%;
+    }
+
+    .login-left{
+        min-height:50vh;
+    }
+
+    .login-right{
+        padding:60px 20px;
+    }
+}

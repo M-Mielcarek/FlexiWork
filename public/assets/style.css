@@ -1,28 +1,130 @@
 :root {
-    --base-colour: #DCD7C9;
-    --text-colour: black;
-    --header-colour: rgb(71, 71, 71);
-    --header-hover-colour: #293335;
-    --hover-colour: rgb(70, 76, 76);
-    --button-colour: rgb(117, 122, 122);
-    --content-colour: #b3b2b1;
-    --border-colour: #d6cfcf;
+    --background-colour: #f3f1f1;
+    --text-colour: #1b2d2f;
+    --header-colour: #133638;
+    --header-text-colour:#ffffff;
+    --header-hover-colour: #ffffff14;
+    --border-colour: #ffffff33;
+    --special-text-colour: #9b5a33;
 }
 
-* {
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
-html, body {
-    height: 100%;
-    padding: 0px;
-    margin: 0px;
-    background: var(--base-colour);
-    font-family: 'Inconsolata', serif;
+body{
+    width:100%;
+    min-height:100vh;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Inconsolata', serif;
-    color: var(--text-colour);
-    margin: 5px;
+.container{
+    display:flex;
+    width:100%;
+    min-height:100vh;
+}
+
+.left-panel{
+    width:70%;
+    background: var(--background-colour);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    padding:40px;
+}
+
+.left-panel h1{
+    font-size:52px;
+    color:var(--text-colour);
+    margin-bottom:20px;
+    letter-spacing:2px;
+}
+
+.welcome{
+    color:var(--special-text-colour);
+    font-size:18px;
+    letter-spacing:3px;
+    margin-bottom:50px;
+    font-weight:bold;
+}
+
+.image-box img{ 
+    width:320px; max-width:100%; 
+}
+
+.right-panel{
+    width:30%;
+    background:var(--header-colour);
+    color:var(--header-text-colour);
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding-top:70px;
+}
+
+.right-panel nav{
+    width:75%;
+}
+
+.right-panel nav ul{
+    list-style:none;
+    width:100%;
+}
+
+.right-panel nav li{
+    width:100%;
+    border-top:1px solid var(--border-colour);
+}
+
+.right-panel nav li:last-child{
+    border-bottom:1px solid var(--border-colour);
+}
+
+.right-panel nav a{
+    display:block;
+    width:100%;
+    text-decoration:none;
+    color:var(--header-text-colour);
+    text-align:center;
+    padding:20px 10px;
+    transition:0.3s;
+    font-size:14px;
+    letter-spacing:1px;
+}
+
+.right-panel nav a:hover{
+    background:var(--header-hover-colour);
+}
+
+/* ===============NIE RUSZAJ JUŻ TEGO CO NA GÓRZE JEST==========================*/
+
+@media(max-width:900px){
+
+    .container{
+        flex-direction:column;
+    }
+
+    .left-panel{
+        width:100%;
+        min-height:60vh;
+    }
+
+    .right-panel{
+        width:100%;
+        padding-bottom:40px;
+    }
+
+    .content-box h1{
+        font-size:40px;
+    }
+
+    .image-box img{
+        width:240px;
+    }
 }
