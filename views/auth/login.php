@@ -22,8 +22,6 @@ require_once "../../path.php";
 
 <div class="login-container">
 
-    <!-- LEWA STRONA -->
-
     <div class="login-left">
 
         <div class="left-content">
@@ -41,7 +39,6 @@ require_once "../../path.php";
 
     </div>
 
-    <!-- PRAWA STRONA -->
 
      <div class="login-right">
 
@@ -50,8 +47,6 @@ require_once "../../path.php";
               class="login-form">
 
             <h2>Logowanie</h2>
-
-            <!-- BŁĄD -->
 
             <?php if(isset($_SESSION['error'])): ?>
 

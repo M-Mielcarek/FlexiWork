@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "../path.php";
 ?>
 
@@ -19,81 +20,18 @@ require_once "../path.php";
 
     <title>FlexiWork</title>
 </head>
-
 <body>
+    
+<div class="container">
 
-    <div class="container">
-
-    <!-- LEWA STRONA -->
     <section class="left-panel">
-
         <h1>FLEXI WORK</h1>
-
 
     </section>
 
-<header class="right-panel">
-    <nav>
-        <ul>
-
-            <li>
-                <a href="<?= BASE_URL ?>public/profil_uzytkownika.php">
-                    Profil użytkownika
-                </a>
-            </li>
-
-            <li>
-                <a href="<?= BASE_URL ?>views/schedule/grafik_uzytkownika.php">
-                    Grafik
-                </a>
-            </li>
-
-            <li>
-                <a href="<?= BASE_URL ?>public/raport_uzytkownika.php">
-                    Raport
-                </a>
-            </li>
-
-            <li>
-                <a href="<?= BASE_URL ?>views/announcements/tablica_ogloszen.php">
-                    Tablica Ogłoszeń
-                </a>
-            </li>
-
-            <li>
-                <a href="<?= BASE_URL ?>views/announcements/bank_wymian.php">
-                    Bank Wymian
-                </a>
-            </li>
-
-            <li>
-                <a href="<?= BASE_URL ?>public/lista_uzytkownikow.php">
-                    Lista użytkowników
-                </a>
-            </li>
-
-            <li>
-                <a href="<?= BASE_URL ?>views/manager/dodaj_pracownika.php">
-                    Dodaj pracownika
-                </a>
-            </li>
-
-            <li>
-                <a href="<?= BASE_URL ?>views/schedule/ustalanie_grafiku.php">
-                    Ustalanie grafiku
-                </a>
-            </li>
-
-            <li>
-                <a href="<?= BASE_URL ?>views/auth/logout.php">
-                    Wyloguj
-                </a>
-            </li>
-
-        </ul>
-    </nav>
-
-</header>
+    <section class="right-panel">
+        <?php require_once ROOT_PATH . "public/headers/header.php"; ?>
+    </section>
 
 </div>
 

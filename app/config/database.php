@@ -1,11 +1,11 @@
 <?php
 
 $host = "localhost";
-$dbname = "flexiwork";
 $user = "root";
-$pass = "";
+$password = "";
+$database = "flexiwork";
 
-$conn = new mysqli($host, $user, $pass, $dbname);
+$conn = new mysqli($host, $user, $password, $database);
 
 if ($conn->connect_error) {
     die("Błąd połączenia: " . $conn->connect_error);

@@ -2,10 +2,6 @@
 session_start();
 
 require_once "../../path.php";
-require_once ROOT_PATH . "app/config/database.php";
-
-$sql = "SELECT * FROM users";
-$result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +10,7 @@ $result = $conn->query($sql);
 
 <meta charset="UTF-8">
 
-<title>Ustalanie grafiku</title>
+<title>Wymagania kadrowe</title>
 
 <link rel="stylesheet"
       href="<?= BASE_URL ?>public/assets/style.css">
@@ -31,33 +27,23 @@ $result = $conn->query($sql);
 
 <h1>FLEXI WORK</h1>
 
-<h2>Ustalanie grafiku</h2>
+<h2>Wymagania kadrowe</h2>
 
 <form class="manager-form">
 
-    <select name="user_id">
-
-        <?php while($user = $result->fetch_assoc()): ?>
-
-            <option value="<?= $user['id']; ?>">
-
-                <?= $user['name']; ?>
-                <?= $user['surname']; ?>
-
-            </option>
-
-        <?php endwhile; ?>
-
-    </select>
-
-    <input type="date" name="date">
+    <input type="date"
+           name="date">
 
     <input type="text"
-           name="hours"
-           placeholder="Np. 8-16">
+           name="shift_hours"
+           placeholder="Godziny zmiany">
+
+    <input type="number"
+           name="workers_needed"
+           placeholder="Liczba pracowników">
 
     <button type="submit">
-        Dodaj zmianę
+        Zapisz wymagania
     </button>
 
 </form>

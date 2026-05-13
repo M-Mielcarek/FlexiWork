@@ -12,12 +12,12 @@ $result = $conn->query($sql);
 <html lang="pl">
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<title>Ustalanie grafiku</title>
+    <title>Ustalanie stawki</title>
 
-<link rel="stylesheet"
-      href="<?= BASE_URL ?>public/assets/style.css">
+    <link rel="stylesheet"
+          href="<?= BASE_URL ?>public/assets/style.css">
 
 </head>
 
@@ -31,9 +31,9 @@ $result = $conn->query($sql);
 
 <h1>FLEXI WORK</h1>
 
-<h2>Ustalanie grafiku</h2>
+<h2>Ustalanie stawki godzinowej</h2>
 
-<form class="manager-form">
+<form action="" method="POST" class="manager-form">
 
     <select name="user_id">
 
@@ -50,14 +50,13 @@ $result = $conn->query($sql);
 
     </select>
 
-    <input type="date" name="date">
-
-    <input type="text"
-           name="hours"
-           placeholder="Np. 8-16">
+    <input type="number"
+           step="0.01"
+           name="hour_rate"
+           placeholder="Stawka godzinowa">
 
     <button type="submit">
-        Dodaj zmianę
+        Zapisz stawkę
     </button>
 
 </form>

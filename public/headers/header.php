@@ -30,42 +30,53 @@ if ($userId) {
 ?>
     <nav>
         <ul>
+            <?php if ($role === 'user'): ?>
             <li>
                 <a href="<?= BASE_URL ?>public/profil_uzytkownika.php">
                     Profil użytkownika
                 </a>
             </li>
 
-            <!-- GRAFIK -->
             <li>
                 <a href="<?= BASE_URL ?>views/schedule/grafik_uzytkownika.php">
                     Grafik
                 </a>
             </li>
 
-            <!-- RAPORT -->
             <li>
                 <a href="<?= BASE_URL ?>public/raport_uzytkownika.php">
                     Raport
                 </a>
             </li>
 
-            <!-- TABLICA OGŁOSZEŃ -->
             <li>
                 <a href="<?= BASE_URL ?>views/announcements/tablica_ogloszen.php">
                     Tablica Ogłoszeń
                 </a>
             </li>
 
-            <!-- BANK WYMIAN -->
             <li>
                 <a href="<?= BASE_URL ?>views/announcements/bank_wymian.php">
                     Bank Wymian
                 </a>
             </li>
 
-            <!-- OPCJE TYLKO DLA MANAGERA -->
+            <li>
+                <a href="<?= BASE_URL ?>views/auth/logout.php">
+                    Wyloguj
+                </a>
+            </li>
+
+            <?php endif; ?>
+
+            <!-- DLA MANAGERA -->
             <?php if ($role === 'manager'): ?>
+
+                <li>
+                    <a href="<?= BASE_URL ?>public/profil_uzytkownika.php">
+                        Profil użytkownika
+                    </a>
+                </li>
 
                 <li>
                     <a href="<?= BASE_URL ?>public/lista_uzytkownikow.php">
@@ -85,14 +96,27 @@ if ($userId) {
                     </a>
                 </li>
 
+                <li>
+                    <a href="<?= BASE_URL ?>views/announcements/tablica_ogloszen.php">
+                        Tablica Ogłoszeń
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?= BASE_URL ?>views/announcements/bank_wymian.php">
+                        Bank Wymian
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?= BASE_URL ?>views/auth/logout.php">
+                        Wyloguj
+                    </a>
+                </li>
+
             <?php endif; ?>
 
-            <!-- WYLOGUJ -->
-            <li>
-                <a href="<?= BASE_URL ?>views/auth/logout.php">
-                    Wyloguj
-                </a>
-            </li>
+
 
         </ul>
     </nav>

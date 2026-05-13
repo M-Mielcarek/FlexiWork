@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once "path.php";
+require_once ROOT_PATH . "app/models/User.php";
 ?>
 
 <!DOCTYPE html>
@@ -21,19 +22,18 @@ require_once "path.php";
     <title>FlexiWork</title>
 </head>
 <body>
-    
+
 <div class="container">
 
     <section class="left-panel">
         <h1>FLEXI WORK</h1>
 
-        <p class="welcome">
-            WITAJ,
-            <?= $_SESSION['name'] ?? 'Użytkowniku'; ?>
-        </p>
+    <p class="welcome">
+        Witaj, <?= ($_SESSION['name'] ?? '') . ' ' . ($_SESSION['surname'] ?? '') ?>
+    </p>
 
         <div class="image-box">
-            <img src="<?= BASE_URL ?>public/assets/team.png" alt="Team">
+            <img src="<?= BASE_URL ?>public/assets/house.jpg" alt="Team">
         </div>
     </section>
 
