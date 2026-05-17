@@ -51,13 +51,13 @@ if ($userId) {
 
             <li>
                 <a href="<?= BASE_URL ?>views/announcements/tablica_ogloszen.php">
-                    Tablica Ogłoszeń
+                    Tablica ogłoszeń
                 </a>
             </li>
 
             <li>
                 <a href="<?= BASE_URL ?>views/announcements/bank_wymian.php">
-                    Bank Wymian
+                    Bank wymian
                 </a>
             </li>
 
@@ -85,26 +85,33 @@ if ($userId) {
                 </li>
 
                 <li>
-                    <a href="<?= BASE_URL ?>views/manager/dodaj_pracownika.php">
-                        Dodaj pracownika
-                    </a>
-                </li>
-
-                <li>
                     <a href="<?= BASE_URL ?>views/schedule/ustalanie_grafiku.php">
                         Ustalanie grafiku
                     </a>
                 </li>
+        
+                <li>
+                    <a href="<?= BASE_URL ?>public/raport_uzytkownika.php">
+                        Raporty użytkowników
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?= BASE_URL ?>views/manager/wymagania_kadrowe.php">
+                        Wymagania kadrowe
+                    </a>
+                </li>
+
 
                 <li>
                     <a href="<?= BASE_URL ?>views/announcements/tablica_ogloszen.php">
-                        Tablica Ogłoszeń
+                        Tablica ogłoszeń
                     </a>
                 </li>
 
                 <li>
                     <a href="<?= BASE_URL ?>views/announcements/bank_wymian.php">
-                        Bank Wymian
+                        Bank wymian
                     </a>
                 </li>
 

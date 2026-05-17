@@ -1,73 +1,120 @@
 <?php
+
 session_start();
 
 require_once "../../path.php";
 require_once ROOT_PATH . "app/config/database.php";
+require_once ROOT_PATH . "app/middleware/auth.php";
 
-$sql = "SELECT * FROM users";
-$result = $conn->query($sql);
+if (!isset($_GET['id'])) {
+    die("Brak ID pracownika");
+}
+
+$employeeId = $_GET['id'];
+
+$sql = "
+SELECT *
+FROM users
+WHERE id = ?
+";
+
+$stmt = $conn->prepare($sql);
+
+$stmt->bind_param(
+    "i",
+    $employeeId
+);
+
+$stmt->execute();
+
+$result = $stmt->get_result();
+
+$employee = $result->fetch_assoc();
+
+if (!$employee) {
+    die("Nie znaleziono pracownika");
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $dayRate = $_POST['day_rate'];
+    $nightRate = $_POST['night_rate'];
+    $sqlUpdate = "
+    UPDATE users
+    SET
+        day_rate = ?,
+        night_rate = ?
+    WHERE id = ?
+    ";
+
+    $stmtUpdate = $conn->prepare($sqlUpdate);
+
+    $stmtUpdate->bind_param(
+        "ddi",
+        $dayRate,
+        $nightRate,
+        $employeeId
+    );
+
+    $stmtUpdate->execute();
+
+    header(
+        "Location: " . BASE_URL . "public/lista_uzytkownikow.php"
+    );
+
+    exit;
+}
+
 ?>
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-
-    <meta charset="UTF-8">
-
-    <title>Ustalanie stawki</title>
-
-    <link rel="stylesheet"
-          href="<?= BASE_URL ?>public/assets/style.css">
-
+<?php require_once ROOT_PATH . "public/includes/head.php"; ?>
+<title>Ustalanie stawki</title>
 </head>
 
 <body>
-
 <div class="container">
-
 <section class="left-panel">
-
 <div class="page-content">
-
 <h1>FLEXI WORK</h1>
 
-<h2>Ustalanie stawki godzinowej</h2>
+<h2>
+<?= $employee['name']; ?>
+<?= $employee['surname']; ?>
+</h2>
 
-<form action="" method="POST" class="manager-form">
+<form method="POST"
+      class="manager-form">
 
-    <select name="user_id">
+<label>Stawka dzienna</label>
 
-        <?php while($user = $result->fetch_assoc()): ?>
+<input type="number"
+       step="0.01"
+       min="0"
+       name="day_rate"
+       value="<?= $employee['day_rate']; ?>"
+       required>
 
-            <option value="<?= $user['id']; ?>">
+<label>Stawka nocna</label>
 
-                <?= $user['name']; ?>
-                <?= $user['surname']; ?>
+<input type="number"
+       step="0.01"
+       min="0"
+       name="night_rate"
+       value="<?= $employee['night_rate']; ?>"
+       required>
 
-            </option>
-
-        <?php endwhile; ?>
-
-    </select>
-
-    <input type="number"
-           step="0.01"
-           name="hour_rate"
-           placeholder="Stawka godzinowa">
-
-    <button type="submit">
-        Zapisz stawkę
-    </button>
-
+<button type="submit">
+    Zapisz stawki
+</button>
 </form>
-
 </div>
-
 </section>
 
-    <section class="right-panel">
-        <?php require_once ROOT_PATH . "public/headers/header.php"; ?>
-    </section>
+<section class="right-panel">
+<?php require_once ROOT_PATH . "public/headers/header.php"; ?>
+</section>
+
 </div>
 
 </body>

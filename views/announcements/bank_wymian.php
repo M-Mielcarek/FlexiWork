@@ -1,70 +1,108 @@
 <?php
+
 session_start();
 
 require_once "../../path.php";
 require_once ROOT_PATH . "app/config/database.php";
-require_once ROOT_PATH . "app/controllers/ExchangeController.php";
+require_once ROOT_PATH . "app/middleware/auth.php";
 
-$exchanges = ExchangeController::index();
+$userId = $_SESSION['user_id'];
+
+if (isset($_GET['take'])) {
+    $scheduleId = $_GET['take'];
+    $sqlUpdate = "
+    UPDATE schedules
+    SET
+        user_id = ?,
+        status = 'active'
+    WHERE id = ?
+    ";
+
+    $stmtUpdate = $conn->prepare($sqlUpdate);
+    $stmtUpdate->bind_param(
+        "ii",
+        $userId,
+        $scheduleId
+    );
+
+    $stmtUpdate->execute();
+
+    $sqlDelete = "
+    DELETE FROM shift_exchange
+    WHERE schedule_id = ?
+    ";
+
+    $stmtDelete = $conn->prepare($sqlDelete);
+    $stmtDelete->bind_param(
+        "i",
+        $scheduleId
+    );
+
+    $stmtDelete->execute();
+    header("Location: bank_wymian.php");
+    exit;
+}
+
+$sql = "
+SELECT
+    shift_exchange.id, schedules.id AS schedule_id, schedules.work_date, schedules.start_time, schedules.end_time,
+    users.name, users.surname
+FROM shift_exchange
+JOIN schedules
+ON schedules.id = shift_exchange.schedule_id
+JOIN users
+ON users.id = shift_exchange.user_id
+ORDER BY schedules.work_date ASC
+";
+
+$result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <script src="https://kit.fontawesome.com/f45c1e3753.js" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="<?= BASE_URL ?>public/assets/style.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
-
-    <title>FlexiWork</title>
+<?php require_once ROOT_PATH . "public/includes/head.php"; ?>
+<title>Bank wymian</title>
 </head>
+
 <body>
-    
 <div class="container">
-
 <section class="left-panel">
+    <div class="page-content">
+    <h1>FLEXI WORK</h1>
+    <h2>Bank wymian</h2>
+    <div class="exchange-list">
+        <?php while($shift = $result->fetch_assoc()): ?>
 
-<div class="page-content">
+        <div class="exchange-box">
+        <h3>
+            <?= $shift['name']; ?>
+            <?= $shift['surname']; ?>
+        </h3>
 
-<h1>FLEXI WORK</h1>
+        <p>
+            <?= date("d.m.Y", strtotime($shift['work_date'])); ?>
+        </p>
 
-<h2>Bank Wymian</h2>
+        <p>
+            <?= substr($shift['start_time'], 0, 5); ?>
+            -
+            <?= substr($shift['end_time'], 0, 5); ?>
+        </p>
 
-<div class="exchange-box">
-
-<?php foreach($exchanges as $exchange): ?>
-
-<div class="exchange-row">
-
-    <span>
-        <?= $exchange['type']; ?>
-    </span>
-
-    <button>
-        <?= $exchange['description']; ?>
-    </button>
-
+        <a class="take-shift-btn" href="?take=<?= $shift['schedule_id']; ?>"
+           onclick="return confirm('Przejąć zmianę?')">
+            Przejmij zmianę
+        </a>
     </div>
-
-<?php endforeach; ?>
-
+<?php endwhile; ?>
 </div>
-
 </div>
-
 </section>
 
     <section class="right-panel">
         <?php require_once ROOT_PATH . "public/headers/header.php"; ?>
     </section>
 </div>
-
 </body>
 </html>

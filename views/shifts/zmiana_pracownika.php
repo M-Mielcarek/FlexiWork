@@ -11,14 +11,10 @@ $shift = ShiftController::show($_GET['id']);
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-
-<meta charset="UTF-8">
-
+<?php require_once ROOT_PATH . "public/includes/head.php"; ?>
 <title>Zmiana</title>
-
-<link rel="stylesheet" href="<?= BASE_URL ?>public/assets/pages.css">
-
 </head>
+
 <body>
 
 <div class="container">

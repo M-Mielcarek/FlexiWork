@@ -2,10 +2,32 @@
     --background-colour: #f3f1f1;
     --text-colour: #1b2d2f;
     --header-colour: #133638;
-    --header-text-colour:#ffffff;
+    --header-text-colour: #ffffff;
     --header-hover-colour: #ffffff14;
     --border-colour: #ffffff33;
     --special-text-colour: #9b5a33;
+
+    --input-background: #879696;
+    --table-border: #ddd;
+    --hover-background: #f5f5f5;
+
+    --danger-colour: #c0392b;
+    --danger-hover-colour: #e74c3c;
+
+    --dark-box-colour: #1f1f1f;
+    --light-text-colour: #cfcfcf;
+    --gray-colour: #777;
+    --exchange-background: #8f8f8f;
+
+    --shadow-light: 0 0 12px rgba(0,0,0,0.08);
+    --shadow-medium: 0 0 15px rgba(0,0,0,0.1);
+    --shadow-dark: 0 4px 12px rgba(0,0,0,0.25);
+
+    --transition: 0.3s;
+    --radius-small: 8px;
+    --radius-medium: 10px;
+    --radius-large: 15px;
+    --radius-xl: 18px;
 }
 
 *{
@@ -26,15 +48,14 @@ body{
     min-height:100vh;
 }
 
+/* ==========LEFT PANEL============= */
 .left-panel{
     width:70%;
-    background: var(--background-colour);
-
+    background:var(--background-colour);
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-
     padding:40px;
 }
 
@@ -53,15 +74,16 @@ body{
     font-weight:bold;
 }
 
-.image-box img{ 
-    width:320px; max-width:100%; 
+.image-box img{
+    width:320px;
+    max-width:100%;
 }
 
+/* ===========RIGHT PANEL=========== */
 .right-panel{
     width:30%;
     background:var(--header-colour);
     color:var(--header-text-colour);
-
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -93,7 +115,7 @@ body{
     color:var(--header-text-colour);
     text-align:center;
     padding:20px 10px;
-    transition:0.3s;
+    transition:var(--transition);
     font-size:14px;
     letter-spacing:1px;
 }
@@ -102,142 +124,596 @@ body{
     background:var(--header-hover-colour);
 }
 
-/* ===============NIE RUSZAJ JUŻ TEGO CO NA GÓRZE JEST==========================*/
-
-.employees-box{
-    width:100%;
-    max-width:900px;
-}
-
-.employees-box h1{
-    text-align:center;
-    margin-bottom:20px;
-}
-
-.employees-box h2{
-    text-align:center;
-    margin-bottom:40px;
-    color:#1b2d2f;
-}
-
-.employees-table{
-    width:100%;
-    border-collapse:collapse;
-    background:white;
-}
-
-.employees-table th{
-    background:#133638;
-    color:white;
-}
-
-.employees-table th,
-.employees-table td{
-    padding:16px;
-    border:1px solid #ddd;
-    text-align:center;
-}
-
-.employees-table tr:hover{
-    background:#f5f5f5;
-}
-
-/* =========================================
-   DODAWANIE PRACOWNIKA
-========================================= */
-
+/* ========HEADINGS============== */
 .page-content{
     width:100%;
     max-width:700px;
 }
 
-.page-content h1{
+.page-content h1,
+.employees-box h1,
+.announcements-container h1{
     text-align:center;
     margin-bottom:20px;
+    color:var(--text-colour);
+}
 
-    color:#1b2d2f;
-
+.page-content h1{
     letter-spacing:3px;
 }
 
-.page-content h2{
+.page-content h2, .employees-box h2,
+.announcements-container h2{
     text-align:center;
-
     margin-bottom:40px;
-
-    color:#1b2d2f;
-
+    color:var(--text-colour);
     font-weight:normal;
 }
 
+/* ===========TABLES=============== */
+.employees-box{
+    width:100%;
+    max-width:900px;
+}
+
+.employees-table{
+    width:100%;
+    border-collapse:collapse;
+    background:var(--header-text-colour);
+}
+
+.employees-table th{
+    background:var(--header-colour);
+    color:var(--header-text-colour);
+}
+
+.employees-table th,
+.employees-table td{
+    padding:16px;
+    border:1px solid var(--table-border);
+    text-align:center;
+}
+
+.employees-table tr:hover{
+    background:var(--hover-background);
+}
+
+/* ======FORMS=============== */
 .form-container{
     width:100%;
-
     display:flex;
     justify-content:center;
 }
 
-.custom-form{
-    width:100%;
-    max-width:450px;
-
+.custom-form, .manager-form, .announcement-form,
+.password-form, .user-data, .exchange-list,
+.announcements-list, .requirements-list,
+.rates-box{
     display:flex;
     flex-direction:column;
+}
 
+.custom-form,
+.manager-form{
+    width:100%;
+    max-width:450px;
+}
+
+.custom-form{
     gap:20px;
 }
 
-.custom-form input{
-    width:100%;
-    padding:18px;
-    border:none;
-    border-radius:10px;
-    background:#879696;
-    color:white;
-    font-size:16px;
-    outline:none;
+.manager-form{
+    margin:auto;
+    gap:18px;
 }
 
-.custom-form input::placeholder{
-    color:white;
+.announcement-form{
+    gap:20px;
+    margin-bottom:40px;
+}
+
+.password-form{
+    margin-top:20px;
+    flex-direction:row;
+    gap:12px;
+}
+
+.user-data{
+    gap:12px;
+}
+
+.exchange-list,
+.announcements-list,
+.requirements-list{
+    gap:25px;
+}
+
+.rates-box{
+    gap:8px;
+}
+
+/* ==============INPUTS================= */
+.custom-form input, .manager-form input,
+.manager-form select, .manager-form textarea,
+.announcement-form textarea, .password-form input{
+    width:100%;
+    border:none;
+    outline:none;
+    border-radius:var(--radius-medium);
+    background:var(--input-background);
+    color:var(--header-text-colour);
+    font-size:15px;
+}
+
+.custom-form input{
+    padding:18px;
+    font-size:16px;
+}
+
+.manager-form input,
+.manager-form select,
+.manager-form textarea{
+    padding:16px;
+}
+
+.announcement-form textarea{
+    min-height:140px;
+    padding:18px;
+}
+
+.manager-form textarea{
+    min-height:120px;
+}
+
+.password-form input{
+    padding:12px;
+}
+
+.custom-form input::placeholder,
+.manager-form input::placeholder,
+.manager-form textarea::placeholder,
+.announcement-form textarea::placeholder,
+.password-form input::placeholder{
+    color:var(--header-text-colour);
+}
+
+.manager-form textarea,
+.announcement-form textarea{
+    resize:none;
+}
+
+/* ============BUTTONS=================== */
+.custom-form button, .manager-form button,
+.announcement-form button, .password-form button,
+.add-employee-btn, .delete-btn,
+.exchange-btn, .take-shift-btn, .rate-btn{
+    border:none;
+    cursor:pointer;
+    transition:var(--transition);
+    text-decoration:none;
+    color:var(--header-text-colour);
+    background:var(--header-colour);
+    border-radius:var(--radius-medium);
+}
+
+.custom-form button,
+.manager-form button,
+.announcement-form button{
+    padding:18px;
+    font-weight:bold;
 }
 
 .custom-form button{
-    padding:18px;
-
-    border:none;
-
-    border-radius:10px;
-
-    background:#133638;
-
-    color:white;
-
     font-size:18px;
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:0.3s;
 }
 
-.custom-form button:hover{
+.manager-form button,
+.announcement-form button{
+    font-size:17px;
+}
+
+.password-form button{
+    padding:16px;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.add-employee-btn{
+    padding:18px 30px;
+    font-size:18px;
+    font-weight:bold;
+    border-radius:12px;
+}
+
+.delete-btn,
+.exchange-btn,
+.take-shift-btn,
+.rate-btn{
+    display:inline-block;
+    text-align:center;
+}
+
+.delete-btn{
+    padding:10px 16px;
+    font-size:14px;
+}
+
+.exchange-btn{
+    margin-top:10px;
+    padding:10px;
+    background:var(--danger-colour);
+    font-size:13px;
+}
+
+.take-shift-btn{
+    margin-top:15px;
+    padding:12px 18px;
+}
+
+.rate-btn{
+    margin-top:8px;
+    padding:8px 12px;
+    font-size:13px;
+}
+
+.custom-form button:hover,
+.manager-form button:hover,
+.announcement-form button:hover,
+.password-form button:hover,
+.add-employee-btn:hover,
+.take-shift-btn:hover{
     opacity:0.9;
 }
 
+.delete-btn:hover{
+    background:#0d2527;
+}
+
+.exchange-btn:hover{
+    background:var(--danger-hover-colour);
+}
+
+/* =============MESSAGES=============== */
+.success-message,
+.error-message{
+    width:100%;
+    padding:15px;
+    margin-bottom:25px;
+    text-align:center;
+    border-radius:var(--radius-medium);
+    color:var(--header-text-colour);
+}
+
+.success-message{
+    background:var(--header-colour);
+}
+
+.error-message{
+    background:var(--danger-colour);
+}
+
+/* =============USER DATA================= */
+.user-data h2{
+    margin-bottom:10px;
+}
+
+.user-data h3{
+    margin-bottom:20px;
+}
+
+.user-data p{
+    line-height:1.9;
+    font-size:17px;
+}
+
+/* ==========CALENDAR============== */
+.calendar{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    background:var(--header-text-colour);
+    border-radius:var(--radius-large);
+    overflow:hidden;
+    box-shadow:var(--shadow-medium);
+}
+
+.calendar-wrapper{
+    margin-top:60px;
+}
+
+.calendar-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:var(--header-colour);
+    padding:20px;
+    border-radius:var(--radius-xl) var(--radius-xl) 0 0;
+    color:var(--header-text-colour);
+}
+
+.calendar-header{
+    font-size:28px;
+    font-weight:700;
+}
+
+.calendar-nav,
+.calendar-arrow{
+    color:var(--header-text-colour);
+    text-decoration:none;
+    transition:0.2s;
+}
+
+.calendar-nav{
+    font-size:30px;
+    font-weight:bold;
+    padding:5px 15px;
+    border-radius:var(--radius-medium);
+}
+
+.calendar-arrow{
+    width:45px;
+    height:45px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+    border-radius:12px;
+}
+
+.calendar-nav:hover,
+.calendar-arrow:hover{
+    background:rgba(255,255,255,0.15);
+}
+
+.calendar-days,
+.calendar-grid{
+    display:grid;
+    grid-template-columns:repeat(7, 1fr);
+}
+
+.calendar-days{
+    background:var(--input-background);
+    color:var(--header-text-colour);
+}
+
+.calendar-days div{
+    padding:15px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.calendar-cell{
+    min-height:120px;
+    border:1px solid var(--table-border);
+    padding:10px;
+    position:relative;
+    background:var(--header-text-colour);
+}
+
+.day-number{
+    font-weight:bold;
+    color:var(--text-colour);
+    margin-bottom:10px;
+}
+
+.shift-box,
+.requirement-shift{
+    background:var(--header-colour);
+    color:var(--header-text-colour);
+    border-radius:var(--radius-small);
+}
+
+.shift-box{
+    padding:10px;
+    text-align:center;
+    font-size:14px;
+    margin-top:10px;
+}
+
+.requirement-shift{
+    margin-top:8px;
+    padding:8px;
+    font-size:12px;
+    line-height:1.5;
+}
+
+.exchange-shift{
+    background:var(--exchange-background) !important;
+    opacity:0.85;
+}
+
+.exchange-info{
+    margin-top:10px;
+    padding:8px;
+    background:var(--gray-colour);
+    border-radius:var(--radius-small);
+    font-size:13px;
+    color:var(--header-text-colour);
+    text-align:center;
+}
+
+.shift-details{
+    margin-top:12px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.shift-details p{
+    font-size:13px;
+    line-height:1.5;
+}
+
+.workers-count{
+    margin-top:5px;
+    font-weight:bold;
+}
+
+/* =============ANNOUNCEMENTS============ */
+.announcements-container{
+    width:100%;
+    max-width:800px;
+    margin:auto;
+}
+
+.announcement-box,
+.requirement-box,
+.exchange-box{
+    background:var(--header-text-colour);
+    border-radius:var(--radius-large);
+    padding:25px;
+    box-shadow:var(--shadow-light);
+}
+
+.announcement-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:10px;
+}
+
+.announcement-author{
+    font-size:18px;
+    font-weight:bold;
+    color:var(--header-colour);
+    margin-bottom:10px;
+}
+
+.announcement-author i{
+    margin-right:8px;
+}
+
+.announcement-date{
+    color:var(--gray-colour);
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+.announcement-message{
+    font-size:16px;
+    line-height:1.6;
+    color:var(--text-colour);
+    word-break:break-word;
+}
+
+.delete-announcement{
+    width:38px;
+    height:38px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    background:var(--danger-colour);
+    color:var(--header-text-colour);
+    text-decoration:none;
+    transition:var(--transition);
+}
+
+.delete-announcement:hover{
+    background:var(--danger-hover-colour);
+}
+
+/* ================REQUIREMENTS============== */
+.requirement-date{
+    font-size:20px;
+    font-weight:bold;
+    color:var(--header-colour);
+    margin-bottom:10px;
+}
+
+.requirement-hours{
+    font-size:18px;
+    color:var(--text-colour);
+    margin-bottom:12px;
+}
+
+.requirement-workers{
+    margin-bottom:12px;
+    font-size:16px;
+}
+
+/* ================ADD EMPLOYEE========= */
+.add-employee-box{
+    width:100%;
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+}
+
+/* ==============REPORT SUMMARY========= */
+.report-summary{
+    display:flex;
+    gap:25px;
+    margin:35px 0 30px;
+    flex-wrap:wrap;
+}
+
+.summary-box{
+    background:var(--dark-box-colour);
+    padding:25px;
+    border-radius:var(--radius-xl);
+    min-width:220px;
+    text-align:center;
+    box-shadow:var(--shadow-dark);
+}
+
+.summary-box h3{
+    color:var(--light-text-colour);
+    margin-bottom:12px;
+    font-size:18px;
+}
+
+.summary-box p{
+    font-size:24px;
+    font-weight:700;
+    color:var(--header-text-colour);
+}
+
+.summary-row{
+    background:var(--dark-box-colour);
+}
+
+.summary-row td{
+    font-weight:700;
+    font-size:18px;
+    color:var(--header-text-colour);
+}
+
+/* ===========LINKS========== */
+.employee-link{
+    color:var(--header-colour);
+    text-decoration:none;
+    font-weight:bold;
+    transition:var(--transition);
+}
+
+.employee-link:hover{
+    opacity:0.7;
+}
+
+/* ============CHANGE PASSWORD====================== */
+.change-password-box{
+    margin-top:40px;
+}
+
+/* =======RESPONSIVE*==================*/
 @media(max-width:900px){
 
     .container{
         flex-direction:column;
     }
 
-    .left-panel{
+    .left-panel,
+    .right-panel{
         width:100%;
+    }
+
+    .left-panel{
         min-height:60vh;
     }
 
     .right-panel{
-        width:100%;
         padding-bottom:40px;
     }
 
@@ -247,5 +723,14 @@ body{
 
     .image-box img{
         width:240px;
+    }
+
+    .calendar-cell{
+        min-height:90px;
+    }
+
+    .shift-box{
+        font-size:11px;
+        padding:6px;
     }
 }

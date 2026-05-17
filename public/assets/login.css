@@ -11,28 +11,18 @@ body{
     background:#f3f1f1;
 }
 
-/* =========================================
-   CONTAINER
-========================================= */
-
 .login-container{
     display:flex;
     width:100%;
     min-height:100vh;
 }
 
-/* =========================================
-   LEWA STRONA
-========================================= */
-
 .login-left{
     width:60%;
     background:#f3f1f1;
-
     display:flex;
     justify-content:center;
     align-items:center;
-
     padding:40px;
 }
 
@@ -59,27 +49,17 @@ body{
     max-width:100%;
 }
 
-/* =========================================
-   PRAWA STRONA
-========================================= */
-
 .login-right{
     width:40%;
     background:#133638;
-
     display:flex;
     justify-content:center;
     align-items:center;
 }
 
-/* =========================================
-   FORMULARZ
-========================================= */
-
 .login-form{
     width:80%;
     max-width:350px;
-
     display:flex;
     flex-direction:column;
 }
@@ -92,38 +72,24 @@ body{
     letter-spacing:2px;
 }
 
-/* INPUT */
-
 .login-form input{
     width:100%;
-
     padding:16px;
-
     margin-bottom:20px;
-
     border:none;
     outline:none;
-
     font-size:15px;
-
     border-radius:4px;
 }
 
-/* BUTTON */
-
 .login-form button{
     padding:16px;
-
     border:none;
-
     background:#9b5a33;
     color:white;
-
     font-size:15px;
     cursor:pointer;
-
     transition:0.3s;
-
     border-radius:4px;
 }
 
@@ -134,24 +100,14 @@ body{
 .error-message{
     background:#c0392b;
     color:white;
-
     padding:12px;
-
     margin-bottom:20px;
-
     text-align:center;
-
     border-radius:4px;
-
     font-size:14px;
 }
 
-/* =========================================
-   RESPONSIVE
-========================================= */
-
 @media(max-width:900px){
-
     .login-container{
         flex-direction:column;
     }
